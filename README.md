@@ -71,7 +71,7 @@ The imdb id is: tt4154796 <br>
 
 ## 📝 Todo <a name = "todo"></a>
 
-- [ ] Add search query endpoint
+- [x] Add search query endpoint
 - [ ] Add top movies endpoint
 - [ ] Add trending movies endpoint
 - [ ] Create a docker image
