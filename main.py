@@ -2,6 +2,7 @@ from typing import Union
 from fastapi import FastAPI
 import uvicorn
 
+from src.search import search
 from src.getData import getData
 from src.getImages import getImages
 
@@ -17,19 +18,23 @@ app = FastAPI(
 
 
 @app.get("/", tags=["Status"])
-def read_root():
+async def read_root():
     return {"Working": "Go to /docs for more info"}
 
 
 @app.get("/api/getinfo/{movie_id}", tags=["IMDB"])
-def read_item(movie_id: str):
+async def read_item(movie_id: str):
     return getData(movie_id)
 
 
 @app.get("/api/getimg/{movie_id}", tags=["IMDB"])
-def read_item(movie_id: str, limit: Union[int, None] = None):
+async def read_item(movie_id: str, limit: Union[int, None] = None):
     return getImages(movie_id, limit)
 
+
+@app.get("/api/search/{q}", tags=["IMDB"])
+async def read_item(q: str):
+    return search(q)
 
 if __name__ == "__main__":
     uvicorn.run(app, host='0.0.0.0', port=8000)
