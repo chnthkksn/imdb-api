@@ -53,6 +53,7 @@ clone the project and run the following commands:
 After running the project you can use the following endpoints: <br>
 
 - /docs - all the endpoints and their usage
+- /api/search/{query} - search for a movie/tv series by name ( urlencode the query - ex: /api/search/avengers%20endgame )
 - /api/getinfo/{movie_id} - get movie/tv series info
 - /api/getimg/{movie_id} - get screenshots of the movie/tv series
 
