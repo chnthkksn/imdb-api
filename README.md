@@ -17,7 +17,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Simple python web scrapper to scrape IMDB. <br>
+Simple python web scraper to scrape IMDB. <br>
 This tool can get the following information:
 
 - Movie Name
@@ -65,7 +65,7 @@ The imdb id is: tt4154796 <br>
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [Python](https://www.python.org/) - Language
-- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Web scrapper
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Web scraper
 - [FastApi](https://fastapi.tiangolo.com/) - Web framework
 - [Uvicorn](https://www.uvicorn.org/) - ASGI Web server
 
