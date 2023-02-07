@@ -3,7 +3,7 @@
 
 ---
 
-<p align="center"> IMDB Scrapper / IMDB API without a key ✨.
+<p align="center"> IMDB Scraper / IMDB API without a key ✨.
     <br> 
 </p>
 
@@ -64,7 +64,7 @@ The imdb id is: tt4154796 <br>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [Python](https://www.python.org/) - Kanguage
+- [Python](https://www.python.org/) - Language
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Web scrapper
 - [FastApi](https://fastapi.tiangolo.com/) - Web framework
 - [Uvicorn](https://www.uvicorn.org/) - ASGI Web server
