@@ -16,7 +16,7 @@ def getData(id):
     extraHeaders = json.loads(re.findall(r'({.+})', (str(soup.find('script', attrs={ 'type': 'application/json', 'id': '__NEXT_DATA__'}))))[0])
     mainHeader = (extraHeaders['props']['pageProps']['aboveTheFoldData'])
     tsHeader = (extraHeaders['props']['pageProps']['mainColumnData'])
-    
+
     genres = []
     i = 0
     while i < len(mainHeader['genres']['genres']):
@@ -32,15 +32,15 @@ def getData(id):
                 'ratings' : mainHeader['ratingsSummary']['aggregateRating'],
                 'seasons' : len(tsHeader['episodes']['seasons']),
                 'totalepisodes' : tsHeader['episodes']['episodes']['total'],
-                'runtime' :  str(datetime.timedelta(seconds=(mainHeader['runtime']['seconds']))),
+                'runtime' : '' if str(mainHeader['runtime']) == 'None' else str(datetime.timedelta(seconds=(mainHeader['runtime']['seconds']))),
                 'genres' : genres,
-                'desc' : mainHeader['primaryVideos']['edges'][0]['node']['description']['value'],
+                'desc' : mainHeader['plot']['plotText']['plainText'],
                 'poster' : mainHeader['primaryImage']['url'],
-                'trailer' : mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'],
-                'cover' : mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url']
+                'trailer' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'],
+                'cover' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url']
             })
         except:
-            info.update({ 'error' : 'An exception occurred' })
+                info.update({ 'error' : 'An exception occurred' })
             
     else:
         try:
@@ -49,12 +49,12 @@ def getData(id):
                 'title' : mainHeader['titleText']['text'],      
                 'year' : mainHeader['releaseYear']['year'],           
                 'ratings' : mainHeader['ratingsSummary']['aggregateRating'],
-                'runtime' :  str(datetime.timedelta(seconds=(mainHeader['runtime']['seconds']))),
+                'runtime' : '' if str(mainHeader['runtime']) == 'None' else str(datetime.timedelta(seconds=(mainHeader['runtime']['seconds']))),
                 'genres' : genres,
-                'desc' : mainHeader['primaryVideos']['edges'][0]['node']['description']['value'],
+                'desc' : mainHeader['plot']['plotText']['plainText'],
                 'poster' : mainHeader['primaryImage']['url'],
-                'trailer' : mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'],
-                'cover' : mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url']
+                'trailer' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'],
+                'cover' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url']
                 })
         except:
             info.update({ 'error' : 'An exception occurred' })
