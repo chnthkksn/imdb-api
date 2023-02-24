@@ -25,16 +25,23 @@ headers = {
 
 def getAkas(id):
     
-    # url = 'https://www.imdb.com/title/' +  id + '/'
-    # info = {}
-    
-    # r = s.get(url)
-    # soup = BeautifulSoup(r.text, 'html.parser')
-    
-    # extraHeaders = json.loads(re.findall(r'({.+})', (str(soup.find('script', attrs={ 'type': 'application/json', 'id': '__NEXT_DATA__'}))))[0])
-    # open("data.json", "w").write(json.dumps(extraHeaders, indent=4))
-    
+    url = 'https://www.imdb.com/title/'+ id +'/releaseinfo/'
     akas = []
+
+    r = s.get(url)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    
+    extraHeaders = json.loads(re.findall(r'({.+})', (str(soup.find('script', attrs={ 'type': 'application/json', 'id': '__NEXT_DATA__'}))))[0])
+      
+    akaData = extraHeaders["props"]["pageProps"]["contentData"]["categories"][1]["section"]["items"]
+    
+    for i in akaData:
+        akas.append(
+            {
+                "country": i["rowTitle"] if "rowTitle" in i else i["listContent"][0]["subText"],
+                "title": i["listContent"][0]["text"]
+            }
+        )
     
     params = {
     'operationName': 'TitleAkasPaginated',
