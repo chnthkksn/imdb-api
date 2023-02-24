@@ -77,4 +77,4 @@ The imdb id is: tt4154796 <br>
 - [ ] Add top movies endpoint
 - [ ] Add trending movies endpoint
 - [ ] Create a docker image
-- [ ] Add as known as titles endpoint
+- [x] Add as known as titles endpoint
