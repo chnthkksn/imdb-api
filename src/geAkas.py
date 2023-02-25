@@ -27,7 +27,7 @@ def getAkas(id):
     
     url = 'https://www.imdb.com/title/'+ id +'/releaseinfo/'
     akas = []
-
+    
     r = s.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
     

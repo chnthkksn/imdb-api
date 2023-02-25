@@ -36,15 +36,15 @@ def getData(id):
                 'genres' : genres,
                 'desc' : mainHeader['plot']['plotText']['plainText'],
                 'poster' : mainHeader['primaryImage']['url'],
-                'trailer' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'],
-                'cover' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url']
+                'trailer' : mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'] if mainHeader.get('primaryVideos') else '',
+                'cover' : mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url'] if mainHeader.get('primaryVideos') else ''
             })
         except:
                 info.update({ 'error' : 'An exception occurred' })
             
     else:
         try:
-            info.update({ 
+            info.update({
                 'type' : mainHeader['titleType']['text'],
                 'title' : mainHeader['titleText']['text'],      
                 'year' : mainHeader['releaseYear']['year'],           
@@ -53,8 +53,8 @@ def getData(id):
                 'genres' : genres,
                 'desc' : mainHeader['plot']['plotText']['plainText'],
                 'poster' : mainHeader['primaryImage']['url'],
-                'trailer' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'],
-                'cover' : '' if mainHeader.get('primaryVideos') else mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url']
+                'trailer' : mainHeader['primaryVideos']['edges'][0]['node']['playbackURLs'][0]['url'] if mainHeader.get('primaryVideos') else '',
+                'cover' : mainHeader['primaryVideos']['edges'][0]['node']['thumbnail']['url'] if mainHeader.get('primaryVideos') else ''
                 })
         except:
             info.update({ 'error' : 'An exception occurred' })

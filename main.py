@@ -5,7 +5,8 @@ import uvicorn
 from src.search import search
 from src.getData import getData
 from src.getImages import getImages
-from src.getakas import getAkas
+from src.geAkas import getAkas
+from src.getTop import getTop
 
 app = FastAPI(
     title="IMDB Unofficial API",
@@ -27,7 +28,6 @@ async def read_root():
 async def read_item(movie_id: str):
     return getData(movie_id)
 
-
 @app.get("/api/getimg/{movie_id}", tags=["IMDB"])
 async def read_item(movie_id: str, limit: Union[int, None] = None):
     return getImages(movie_id, limit)
@@ -39,6 +39,10 @@ async def read_item(q: str):
 @app.get('/api/akas/{movie_id}', tags=["IMDB"])
 async def read_item(movie_id: str):
     return getAkas(movie_id)    
+
+@app.get('/api/top', tags=["IMDB"])
+async def read_item():
+    return getTop()
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, workers=1)
