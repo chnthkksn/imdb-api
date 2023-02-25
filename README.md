@@ -57,6 +57,7 @@ After running the project you can use the following endpoints: <br>
 - /api/getinfo/{movie_id} - get movie/tv series info
 - /api/getimg/{movie_id} - get screenshots of the movie/tv series
 - /api/akas/{movie_id} - get as known as titles of the movie/tv series
+- /api/topmovies - get top 250 movies
 
 <br>{movie_id} is the imdb id of the movie/tv series <br>
 You can get the imdb id from the url of the movie/tv series <br>
@@ -66,15 +67,15 @@ The imdb id is: tt4154796 <br>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [Python](https://www.python.org/) - Language
-- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Web scraper
-- [FastApi](https://fastapi.tiangolo.com/) - Web framework
-- [Uvicorn](https://www.uvicorn.org/) - ASGI Web server
+- [Python](https://www.python.org/)
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) 
+- [FastApi](https://fastapi.tiangolo.com/) 
+- [Uvicorn](https://www.uvicorn.org/) 
 
 ## 📝 Todo <a name = "todo"></a>
 
 - [x] Add search query endpoint
-- [ ] Add top movies endpoint
+- [x] Add top movies endpoint
 - [ ] Add trending movies endpoint
 - [ ] Create a docker image
 - [x] Add as known as titles endpoint
